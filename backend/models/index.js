@@ -15,7 +15,10 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, process.env.DB_USERNAME, process.env.DB_PASSWORD, config);
 }
-
+if ("development" === env) {
+  sequelize.sync({ alter: true });
+  console.log("All tables are up to date");
+}
 fs
   .readdirSync(__dirname)
   .filter(file => {
