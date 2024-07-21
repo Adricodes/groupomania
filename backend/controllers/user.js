@@ -30,7 +30,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email }).then(
+    User.findOne({ where: { email: req.body.email } }).then(
         (user) => {
             if (!user) {
                 return res.status(401).json({
@@ -45,12 +45,12 @@ exports.login = (req, res, next) => {
                         });
                     }
                     const token = jwt.sign(
-                        { userId: user._id },
+                        { userId: user.id },
                         'RANDOM_TOKEN_SECRET',
                         { expiresIn: '24h' });
                     console.log(token)
                     res.status(200).json({
-                        userId: user._id,
+                        userId: user.id,
                         token: token
                     });
                 }
@@ -72,3 +72,28 @@ exports.login = (req, res, next) => {
         }
     );
 }
+
+//TODO code delete user handler
+
+exports.deleteUser = (req, res, next) => {
+    Sauce.findOne({ _id: req.params.id }).then(
+      (sauce) => {
+        const filename = sauce.imageUrl.split('/images/')[1];
+        fs.unlink('images/' + filename, () => {
+          Sauce.deleteOne({ _id: req.params.id }).then(
+            () => {
+              res.status(200).json({
+                message: 'Deleted!'
+              });
+            }
+          ).catch(
+            (error) => {
+              console.log(exports.deleteSauce)
+              res.status(400).json({
+              });
+            }
+          );
+        });
+      }
+    );
+  };
