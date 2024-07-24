@@ -58,7 +58,28 @@ code {
   text-decoration: none;
  }
 
- h1 {
-  color: white;
-  margin-top: 120px;
+ /* nav {
+  display: flex;
+ } */
+
+ .signup-nav,
+ .login-nav {
+  display: flex;
+ }
+
+.signup-nav {
+  margin-left: 500px;
+  margin-top: 20px;
+}
+
+.login-nav {
+  margin-left: 700px;
+  margin-top: -18px;
+}
+
+.main-logo {
+  width: 400px;
+  margin-top: 50px;
+  margin-left: 170px;
+
 }

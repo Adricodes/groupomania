@@ -73,14 +73,12 @@ exports.login = (req, res, next) => {
     );
 }
 
-//TODO code delete user handler
-
 exports.deleteUser = (req, res, next) => {
-    Sauce.findOne({ _id: req.params.id }).then(
+    User.findOne({ _id: req.params.id }).then(
       (sauce) => {
-        const filename = sauce.imageUrl.split('/images/')[1];
+        const filename = user.imageUrl.split('/images/')[1];
         fs.unlink('images/' + filename, () => {
-          Sauce.deleteOne({ _id: req.params.id }).then(
+          User.deleteOne({ _id: req.params.id }).then(
             () => {
               res.status(200).json({
                 message: 'Deleted!'
@@ -88,7 +86,7 @@ exports.deleteUser = (req, res, next) => {
             }
           ).catch(
             (error) => {
-              console.log(exports.deleteSauce)
+              console.log(exports.deleteUser)
               res.status(400).json({
               });
             }
