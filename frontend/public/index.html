@@ -27,7 +27,7 @@
 </head>
 
   <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
-  <div id="root"></div>
+  <!-- <div id="root"></div> -->
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,19 +43,25 @@
   <body>
     <header>
   <!-- <img class="main-logo" src="icon-left-font.png" alt="groupomania logo"> -->
-   <nav>
-   <div>
-  <ul>
-    <div class="signup-nav" href="http://localhost:3000/api/auth/signup">
-    <li><p>Signup</p></li>
+  
+<nav>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+<form [formGroup]="signupForm" *ngIf="!loading">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
   </div>
-  <div class="login-nav" href="http://localhost:3000/api/auth/login">
-    <li><p>Login</p></li>
-  </ul>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
   </div>
-  </nav>
+  <button mat-raised-button color="primary" [disabled]="signupForm.invalid" (click)="onSignup()">SIGN UP</button>
+  <!-- <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p> -->
+</form>
+<img class="main-logo" src="icon-left-font.png" alt="groupomania logo">
+</nav>
 
-  <img class="main-logo" src="icon-above-font.png">
+
 
 </body>
 
