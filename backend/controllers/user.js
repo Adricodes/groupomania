@@ -74,24 +74,19 @@ exports.login = (req, res, next) => {
 }
 
 exports.deleteUser = (req, res, next) => {
-    User.findOne({ _id: req.params.id }).then(
-      (sauce) => {
-        const filename = user.imageUrl.split('/images/')[1];
-        fs.unlink('images/' + filename, () => {
-          User.deleteOne({ _id: req.params.id }).then(
-            () => {
-              res.status(200).json({
+    // FIXME check if req.auth.userId is same as req.params.id
+    User.destroy({ where: { id: req.params.id } }).then(
+        () => {
+            res.status(200).json({
                 message: 'Deleted!'
-              });
-            }
-          ).catch(
-            (error) => {
-              console.log(exports.deleteUser)
-              res.status(400).json({
-              });
-            }
-          );
-        });
-      }
+            });
+        }
+    ).catch(
+        (error) => {
+            console.log(exports.deleteUser)
+            res.status(400).json({
+                error: error.message
+            });
+        }
     );
-  };
+};
