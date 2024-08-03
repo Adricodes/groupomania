@@ -7,7 +7,7 @@ import Login from './Login';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoutes = () => {
-  const auth = JSON.parse(localStorage.getItem('auth')) || '("token": false)';
+  const auth = JSON.parse(localStorage.getItem('auth')) || '{"token": false}';
   return auth.token ? <Outlet /> : <Navigate to="/login" />;
 }
 
@@ -16,12 +16,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<PrivateRoutes />}>
+        {/* <Route element={<PrivateRoutes />}> */}
           <Route path="/" element={<Home />} />
-        </Route>
+        {/* </Route> */}
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/signup" element={<Signup />} /> */}
       </Routes>
     </Router>
   );
