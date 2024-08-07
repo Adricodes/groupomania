@@ -2,7 +2,7 @@
 // import './styles.App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
-import Signup from './SignUp';
+import SignUp from './SignUp';
 import Login from './Login';
 import { Navigate, Outlet } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ function App() {
         {/* </Route> */}
 
         {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/signup" element={<Signup />} /> */}
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );
