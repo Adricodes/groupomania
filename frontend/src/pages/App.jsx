@@ -10,8 +10,7 @@ const PrivateRoutes = () => {
   const auth = JSON.parse(localStorage.getItem('auth')) || '{"token": false}';
   return auth.token ? <Outlet /> : <Navigate to="/login" />;
 }
-
-
+// TODO Add a nav bar
 function App() {
   return (
     <Router>

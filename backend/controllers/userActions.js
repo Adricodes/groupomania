@@ -30,54 +30,6 @@ exports.createUser = (req, res, next) => {
   );
 };
 
-exports.modifyUser = (req, res, next) => {
-  let user = new User({ _id: req.params._id });
-  if (req.file) {
-    const url = req.protocol + '://' + req.get('host');
-    req.body.user = JSON.parse(req.body.user);
-    user = {
-      userId: req.body.User.userId,
-      name: req.body.User.name,
-      imageUrl: url + '/images/' + req.file.filename,
-    };
-  } else {
-    user = {
-      userId: req.body.userId,
-      name: req.body.name,
-    };
-  }
-  console.log(user)
-  User.updateOne({ _id: req.params.id }, user).then(
-    () => {
-      res.status(201).json({
-        message: 'User updated successfully!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-};
-
-exports.getOneUser = (req, res, next) => {
-  User.findOne({
-    _id: req.params.id
-  }).then(
-    (user) => {
-      res.status(200).json(user);
-    }
-  ).catch(
-    (error) => {
-      res.status(404).json({
-        error: error
-      });
-    }
-  );
-};
-
 
 exports.deleteUser = (req, res, next) => {
   User.findOne({ _id: req.params.id }).then(
@@ -97,20 +49,6 @@ exports.deleteUser = (req, res, next) => {
             });
           }
         );
-      });
-    }
-  );
-};
-
-exports.getAllUsers = (req, res, next) => {
-  User.find().then(
-    (users) => {
-      res.status(200).json(users);
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
       });
     }
   );

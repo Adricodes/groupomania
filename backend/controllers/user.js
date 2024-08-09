@@ -74,7 +74,6 @@ exports.login = (req, res, next) => {
 }
 
 exports.deleteUser = (req, res, next) => {
-    // FIXME check if req.auth.userId is same as req.params.id
     User.destroy({ where: { id: req.params.id } }).then(
         () => {
             res.status(200).json({
