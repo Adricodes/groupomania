@@ -10,39 +10,40 @@ function Login() {
     const [email, setEmail] = useState('')
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
-    const userId = useState('')
-    const token = useState('')
+    // const userId = useState('')
+    // const token = useState('')
 
     const handleSubmit = e => {// Prevent the default submit and page reload
-        e.preventDefault()}
+        e.preventDefault()
+    }
 
-        // Handle validations
-        axios
+    // Handle validations
+    axios
         .post("http://localhost:3000/api/auth/signup", { email, password, firstName, lastName })
         .then(response => {
             console.log(response)
-                // Handle response
-                navigate('/login');
-            })
-                // TODO add userId and token to local storage
+            // Handle response
+            navigate('/login');
+        })
+    // TODO add userId and token to local storage
 
-                
 
- // Function to handle storing data and redirecting
- const handleLogin = () => {
-    const userId = "yourUserIdHere";
-    const token = "yourTokenHere";
 
-                localStorage.setItem('userId', userId);
-                localStorage.setItem('token', token);
-                
-                axios
-                // FIXME redirect to homepage
-                .post("http://localhost:3000/api/auth/login", { email, password, firstName, lastName })
-                .then(response => {
-                    console.log(response)
-                        navigate('/');
-                
+    // Function to handle storing data and redirecting
+    const handleLogin = () => {
+        const userId = "yourUserIdHere";
+        const token = "yourTokenHere";
+
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('token', token);
+
+        axios
+            // FIXME redirect to homepage
+            .post("http://localhost:3000/api/auth/login", { email, password, firstName, lastName })
+            .then(response => {
+                console.log(response)
+                navigate('/');
+
             })
             .catch(error => {
                 // TODO Display user friendly error message
