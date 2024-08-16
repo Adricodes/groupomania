@@ -3,3 +3,8 @@
     justify-content: space-between;
     gap: 20px;
 }
+
+body {
+    color: aquamarine;
+    background-color: blue;
+}

@@ -1,10 +1,13 @@
 // import logo from '..assets/logo.svg'
 // import './styles.App.css';
+// import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import SignUp from './SignUp';
 import Login from './Login';
 import { Navigate, Outlet } from 'react-router-dom';
+import React from "react";
+
 
 const PrivateRoutes = () => {
   const auth = JSON.parse(localStorage.getItem('auth')) || '{"token": false}';
@@ -15,15 +18,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route element={<PrivateRoutes />}> */}
+        <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Home />} />
-        {/* </Route> */}
+        </Route>
 
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );
+ 
 }
 
 export default App

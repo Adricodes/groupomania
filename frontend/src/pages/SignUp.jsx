@@ -4,8 +4,14 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
-    const handleSubmit = e => {
-        // Prevent the default submit and page reload
+    const [firstName, setFirstName] = useState()
+    const [lastName, setLastName] = useState()
+    const [password, setPassword] = useState()
+    const [email, setEmail] = useState()
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSubmit = e => {// Prevent the default submit and page reload
         e.preventDefault()
 
         // Handle validations
@@ -17,17 +23,10 @@ function SignUp() {
                 navigate('/login');
             })
             .catch(error => {
-                TODO Display user friendly error message
-                setErrorMessage(error.message)
+                // TODO Display user friendly error message
+                setErrorMessage('Oops, there is an error!')
             })
     }
-
-    const [firstName, setFirstName] = useState()
-    const [lastName, setLastName] = useState()
-    const [password, setPassword] = useState()
-    const [email, setEmail] = useState()
-    const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState('')
 
     return (
         <div>
@@ -38,7 +37,7 @@ function SignUp() {
                 <h1>Sign up</h1>
                 <p className="item">
                     <label htmlFor="firstName">First name</label>
-                    <input type="firstName" name="firstName" id="firstName" value={firstName}
+                    <input type="firstName" name="firstName" id="SecondFirstNameId" value={firstName}
                         onChange={e => setFirstName(e.target.value)}
                     />
                 </p>
@@ -63,12 +62,10 @@ function SignUp() {
                 <p className="item">
                     <input type="submit" value="signup" />
                 </p>
-
             </form>
         </div>
     )
-
-
 }
+
 
 export default SignUp;
