@@ -42,5 +42,13 @@ function Navbar() {
       </div>
     );
   }
+
+  <nav>
+  <ul>
+      <a href="./signup.html"><li>Signup</li></a>
+      <a href="./login.html"><li>Login</li></a>
+  </ul>
+</nav> 
+
   export default Navbar;
   ;

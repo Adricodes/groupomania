@@ -4,10 +4,10 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
-    const [firstName, setFirstName] = useState()
-    const [lastName, setLastName] = useState()
-    const [password, setPassword] = useState()
-    const [email, setEmail] = useState()
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
 

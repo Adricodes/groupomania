@@ -7,6 +7,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import { Navigate, Outlet } from 'react-router-dom';
 import React from "react";
+import Navbar from './Navbar'; 
 
 
 const PrivateRoutes = () => {
@@ -16,18 +17,21 @@ const PrivateRoutes = () => {
 // TODO Add a nav bar
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Home />} />
-        </Route>
+    <>
+      <Navbar />
+      <Router>
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/" element={<Home />} />
+          </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </Router>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </Router>
+    </>
   );
- 
+
 }
 
 export default App
