@@ -5,30 +5,37 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
-    // FIXME initialize variables to empty strings
-    const [firstName, setFirstName] = useState()
-    const [lastName, setLastName] = useState()
-    const [password, setPassword] = useState()
-    const [email, setEmail] = useState()
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
 
     const handleSubmit = e => {// Prevent the default submit and page reload
         e.preventDefault()
-        // FIXME FIRST name and last name are not needed to login
+
         axios
-            .post("http://localhost:3000/api/auth/login", { email, password, firstName, lastName })
+            .post("http://localhost:3000/api/auth/login", { email, password })
             .then(response => {
                 console.log(response)
-                 // TODO add userId and token to local storage by calling stored user credentials function
+                // TODO add userId and token to local storage by calling stored user credentials function
+
+                const userId = response.data.userId;
+                const token = response.data.token;
+                // 24 and 32 remove
+                // Save to local storage
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('token', token);
                 navigate('/');
+
             })
             .catch(error => {
                 setErrorMessage('Oops, there is an error!')
             })
     }
 
-   const storeUserCredentials = (userId, token) => {
+    const storeUserCredentials = (userId, token) => {
         localStorage.setItem('userId', userId);
         localStorage.setItem('token', token);
     };
@@ -40,10 +47,8 @@ function Login() {
         const token = "yourTokenHere";
 
         localStorage.setItem('userId', userId);
-
-
     }
-    // FIXME remove first name and last name
+
     return (
         <div>
             {errorMessage && (
@@ -51,18 +56,6 @@ function Login() {
             )}
             <form action="" id="firstName" method="post" onSubmit={handleSubmit}>
                 <h1>Login</h1>
-                <p className="item">
-                    <label htmlFor="firstName">First name</label>
-                    <input type="firstName" name="firstName" id="SecondFirstNameId" value={firstName}
-                        onChange={e => setFirstName(e.target.value)}
-                    />
-                </p>
-                <p className="item">
-                    <label htmlFor="lastName">Last name</label>
-                    <input type="lastName" name="lasttName" id="lastName" value={lastName}
-                        onChange={e => setLastName(e.target.value)}
-                    />
-                </p>
                 <p className="item">
                     <label htmlFor="email"> Email </label>
                     <input type="email" name="email" id="email" value={email}

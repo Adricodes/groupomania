@@ -7,7 +7,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import { Navigate, Outlet } from 'react-router-dom';
 import React from "react";
-import Navbar from './Navbar'; 
+import Navbar from './Navbar';
 
 
 const PrivateRoutes = () => {
@@ -18,8 +18,8 @@ const PrivateRoutes = () => {
 function App() {
   return (
     <>
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<Home />} />

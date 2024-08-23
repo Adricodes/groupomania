@@ -4,7 +4,37 @@
     gap: 20px;
 }
 
+#id-root {
+  color: black;
+}
+
 body {
-    color: aquamarine;
-    background-color: blue;
+    color: violet;
+    background-color: white;
+}
+
+.undefined {
+  color: black;
+  font-size: 18px;
+}
+
+
+h1 {
+  color: black;
+  font-size: 24px;
+  margin-top: 40px;
+}
+
+p.item {
+  color: black;
+}
+
+#firstName {
+  margin-top: 50px;
+  line-height: -12px;
+  line-height: 12px;
+}
+
+label {
+  font-size: 18px;
 }
