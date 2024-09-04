@@ -1,15 +1,7 @@
-// import Banner from '../components/Banner';
 // import '../styles/Home.css';
-
-// function Home() {
-//     return (
-//         <>
-//         {/* <Banner /> */}
-//         <div className="home-page-shoutout">I'm a homepage, yay!</div>
-//         </>
-//     )
-// }
-
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     return (
@@ -31,5 +23,7 @@ function Home() {
         </div>
     )
 }
+
+
 
 export default Home;

@@ -1,0 +1,35 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#id-root {
+  color: red;
+}
+
+.undefined {
+  color: black;
+  font-size: 18px;
+}
+
+
+h1 {
+  color: red;
+  font-size: 24px;
+  margin-top: 40px;
+}
+
+p.item {
+  color: black;
+}
+
+#firstName {
+  margin-top: 50px;
+  line-height: -12px;
+  line-height: 12px;
+}
+
+label {
+  font-size: 18px;
+}

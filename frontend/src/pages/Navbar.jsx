@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from '../styles/Navbar.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/icon-left-font-monochrome-black.svg';
+import logo from '../assets/icon.svg';
 
 function Navbar() {
   // adding the states 

@@ -15,6 +15,16 @@ const PrivateRoutes = () => {
   return auth.token ? <Outlet /> : <Navigate to="/login" />;
 }
 // TODO Add a nav bar
+<nav>
+<ul>
+<a href="./home"><li>Home</li></a>
+  <a href="./signup"><li>Sign up</li></a>
+  <a href="./login"><li>Login</li></a>
+  <a href="./profile"><li>Profile</li></a>
+  <a href="./content"><li>Content</li></a>
+  <a href="./"><li>Logout</li></a>
+</ul>
+</nav>
 function App() {
   return (
     <>

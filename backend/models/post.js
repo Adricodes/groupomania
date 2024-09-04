@@ -1,15 +1,53 @@
-// TODO Create post schema
+'use strict';
+const {
+    Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    class Post extends Model {
+        static associate(models) {
+        }
+    }
+    Post.init({
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            unique: false,
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false,
+        },
+        content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false,
+        },
+        mediaUrl: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: false,
+        },
+        usersRead: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER),
+            allowNull: false,
+            unique: false,
+        },
+    }, {
+        sequelize,
+        modelName: 'Post',
+    });
+    return Post;
+};
 
-const sequelize = require('sequelize');
+// const sequelize = require('sequelize');
 
-const userSchema = sequelize.Schema({
-    userId: { type: String, required: true },
-    name: { type: String, required: true },
-    imageUrl: { type: String, required: true },
-    likes: { type: Number, required: true },
-    dislikes: { type: Number, required: true },
-    usersLiked: { type: [String], required: true },
-    usersDisliked: { type: [String], required: true },
-});
+// const postSchema = sequelize.Schema({
+//     userId: { type: String, required: true },
+//     title: { type: String, required: true },
+//     content: { type: String, required: true },
+//     mediaUrl: { type: String, required: false },
+//     usersRead: { type: [String], required: true },
+// });
 
-module.exports = sequelize.model('User', userchema);
+// module.exports = sequelize.model('Post', postSchema);

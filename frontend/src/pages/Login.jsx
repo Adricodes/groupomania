@@ -20,13 +20,11 @@ function Login() {
             .then(response => {
                 console.log(response)
                 // TODO add userId and token to local storage by calling stored user credentials function
-
                 const userId = response.data.userId;
                 const token = response.data.token;
-                // 24 and 32 remove
-                // Save to local storage
-                localStorage.setItem('userId', userId);
-                localStorage.setItem('token', token);
+                localStorage.setItem("userId", JSON.stringify(userId));
+                localStorage.setItem("token", JSON.stringify(token));
+              
                 navigate('/');
 
             })

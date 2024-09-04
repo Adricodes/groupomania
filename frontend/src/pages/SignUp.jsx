@@ -23,7 +23,6 @@ function SignUp() {
                 navigate('/login');
             })
             .catch(error => {
-                // TODO Display user friendly error message
                 setErrorMessage('Oops, there is an error!')
             })
     }
