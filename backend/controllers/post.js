@@ -32,25 +32,26 @@ exports.getAllPosts = (req, res, next) => {
 exports.createPost = (req, res, next) => {
   if (req.file) {
     const url = req.protocol + '://' + req.get('host');
-    req.body.user = JSON.parse(req.body.user);
-    user = {
-      userId: req.body.user.userId,
-      title: req.body.user.title,
-      content: req.body.user.content,
+    // req.body.user = JSON.parse(req.body.user);
+    const post = {
+      userId: req.body.post.userId,
+      title: req.body.post.title,
+      content: req.body.post.content,
       usersRead: [],
-      imageUrl: url + '/images/' + req.file.filename,
+      mediaUrl: url + '/images/' + req.file.filename,
     };
   } else {
-    user = {
-      userId: req.body.userId,
-      name: req.body.name,
+
+    // FIXME change to post with no mediaUrl
+    post = {
+
     };
   }
-  console.log(user)
-  Sauce.updateOne({ _id: req.params.id }, user).then(
+  // TODO change code below to use sequelize and not mongoose
+  post.save().then(
     () => {
       res.status(201).json({
-        message: 'Sauce updated successfully!'
+        message: 'Post saved successfully!'
       });
     }
   ).catch(
@@ -61,74 +62,3 @@ exports.createPost = (req, res, next) => {
     }
   );
 };
-const req = req.body.post;
-const parsedPost = JSON.parse(req.body.post);
-const url = req.protocol + '://' + req.get('host');
-const post = new Post({
-  title: parsedPost.title,
-  content: parsedPost.content,
-  userId: parsedPost.userId,
-  mediaUrl: url + '/media/' + req.file.filename,
-  usersRead: [],
-
-});
-
-post.save().then(
-  () => {
-    res.status(201).json({
-      message: 'Post saved successfully!'
-    });
-  }
-).catch(
-  (error) => {
-    res.status(400).json({
-      error: error
-    });
-  }
-);
-
-// exports.modifyPost = (req, res, next) => {
-//     const postObject = req.file
-//         ? {
-//             ...JSON.parse(req.body.post),
-//             imageUrl: `${req.protocol}://${req.get('host')}/public/${req.file.filename
-//                 }`
-//         }
-//         : { ...req.body }
-
-//     Post.findOne({
-//         where: { id: req.params.id, userId: req.user.id },
-//         include: db.User
-//     }).then(post => {
-//         if (!post) {
-//             res.status(400).json({ error: "You are not authorized" })
-//         } else {
-//             post.update(postObject).then(post => res.status(200).json({ post }))
-//         }
-//     })
-// }
-
-// exports.deletePost = (req, res, next) => {
-//     const where = {
-//         id: req.params.id
-//     }
-
-//     if (!req.user.admin) {
-//         where.userId = req.user.id
-//     }
-
-//     Post.findOne({ where })
-//         .then(post => {
-//             if (!post) {
-//                 res.status(400).json({ error: "You are not authorized" })
-//             }
-//             post
-//                 .destroy()
-//                 .then(() =>
-//                     res.status(200).json({ message: 'Post deleted!' })
-//                 )
-//                 .catch(error => res.status(400).json({ error }))
-//         })
-//         .catch(error => res.status(500).json({ error: error.message }))
-// }
-

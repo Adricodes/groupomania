@@ -2,10 +2,12 @@ import { useState } from 'react'
 import styles from '../styles/Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from '../assets/icon.svg';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   // adding the states 
   const [isActive, setIsActive] = useState(false);
+
   //add the active class
   const toggleActiveClass = () => {
     setIsActive(!isActive);
@@ -14,6 +16,23 @@ function Navbar() {
   const removeActive = () => {
     setIsActive(false)
   }
+
+  // const LogoutButton = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user session, token, or authentication data
+    // TODO remove userId
+    localStorage.removeItem('token', 'userId'); // or sessionStorage.clear() for session storage
+   
+    // Optionally, call the API to log out from the server
+    // await fetch('/api/logout', { method: 'POST' });
+
+    // Redirect to login or homepage
+    navigate('/login'); // or navigate('/') for homepage
+  };
+
   return (
     <header className="app-header">
       <nav className={`${styles.navbar}`}>
@@ -34,7 +53,7 @@ function Navbar() {
             <Link to='/profile' className={`${styles.navLink}`}>Profile</Link>
           </li>
           <li onClick={removeActive}>
-            <Link to='/logout' className={`${styles.navLink}`}>Logout</Link>
+            <Link to='/login' className={`${styles.navLink}`} onClick={handleLogout}>Logout</Link>
           </li>
         </ul>
         <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>

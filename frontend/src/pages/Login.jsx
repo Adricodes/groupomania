@@ -19,7 +19,7 @@ function Login() {
             .post("http://localhost:3000/api/auth/login", { email, password })
             .then(response => {
                 console.log(response)
-                // TODO add userId and token to local storage by calling stored user credentials function
+               
                 const userId = response.data.userId;
                 const token = response.data.token;
                 localStorage.setItem("userId", JSON.stringify(userId));
