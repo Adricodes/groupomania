@@ -23,8 +23,9 @@ function Navbar() {
 
   const handleLogout = () => {
     // Clear user session, token, or authentication data
-    // TODO remove userId
-    localStorage.removeItem('token', 'userId'); // or sessionStorage.clear() for session storage
+    
+    localStorage.removeItem('token'); // or sessionStorage.clear() for session storage
+    localStorage.removeItem('userId'); 
    
     // Optionally, call the API to log out from the server
     // await fetch('/api/logout', { method: 'POST' });

@@ -4,6 +4,25 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('')
+
+const handleSubmit = e => // Prevent the default submit and page reload
+    e.preventDefault()
+
+    axios
+    .post("http://localhost:3000/api/auth/signup", { title, content })
+    .then(response => {
+        console.log(response)
+        // Handle response
+        navigate('/login');
+    })
+    .catch(error => {
+        setErrorMessage('Oops, there is an error!')
+    })
+
     return (
         <div>
             <form action="" id="home" method="get">
@@ -24,8 +43,4 @@ function Home() {
     )
 }
 
-
-
-
-
-export default Home;
+export default Home

@@ -43,8 +43,7 @@ function Profile() {
 
                 <button
                     className="profile__deactivate-btn"
-                    onClick={handleSubmit}
-                >
+                    onClick={handleSubmit}>
                     Deactivate account
                 </button>
             </div>

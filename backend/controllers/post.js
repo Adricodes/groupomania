@@ -29,25 +29,28 @@ exports.getAllPosts = (req, res, next) => {
     .catch(error => res.status(400).json({ error }))
 }
 
-exports.createPost = (req, res, next) => {
+exports.createPost = async (req, res, next) => {
+  let post
+  console.log(req.body)
   if (req.file) {
+    const parsedPost = JSON.parse(req.body.post);
     const url = req.protocol + '://' + req.get('host');
     // req.body.user = JSON.parse(req.body.user);
-    const post = {
-      userId: req.body.post.userId,
-      title: req.body.post.title,
-      content: req.body.post.content,
+     post = Post.build({
+      userId: parsedPost.userId,
+      title: parsedPost.title,
+      content: parsedPost.content,
       usersRead: [],
-      mediaUrl: url + '/images/' + req.file.filename,
-    };
+      mediaUrl: url + '/media/' + req.file.filename,
+    });
   } else {
-
-    // FIXME change to post with no mediaUrl
     post = {
-
+      userId: parsedPost.userId,
+      title: parsedPost.title,
+      content: parsedPost.content,
     };
   }
-  // TODO change code below to use sequelize and not mongoose
+
   post.save().then(
     () => {
       res.status(201).json({
@@ -61,4 +64,10 @@ exports.createPost = (req, res, next) => {
       });
     }
   );
-};
+
+  // const post = await User.create({ firstName });
+  // // console.log(jane); // Don't do this
+  // console.log(firstName.toJSON()); // This is good!
+  // console.log(JSON.stringify(firstName, null, 4))
+
+}
