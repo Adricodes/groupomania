@@ -16,9 +16,10 @@ function Profile() {
         const token = localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         if (token) {
+            console.log(token)
+            console.log(userId)
             axios
-
-                .delete(`http://localhost:3000/api/auth/${userId}`, {
+                 .delete(`http://localhost:3000/api/auth/${userId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })
                 .then(() => {

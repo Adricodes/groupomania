@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import styles from '../styles/Navbar.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/icon.svg';
+import logo from '../assets/icon-left-font-monochrome-black.svg';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Navbar.css';
 
 function Navbar() {
   // adding the states 
@@ -12,7 +13,7 @@ function Navbar() {
   const toggleActiveClass = () => {
     setIsActive(!isActive);
   };
-  //clean up function to remove the active class
+  //clean up function to remove the active className
   const removeActive = () => {
     setIsActive(false)
   }
@@ -41,18 +42,23 @@ function Navbar() {
           <img src={logo} alt="Logo" />
         </Link>
         <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+          {/* TODO conditionally show home when user is not logged in */}
           <li onClick={removeActive}>
-            <a href='#home' className={`${styles.navLink}`}>Home</a>
+            <Link to='/' className={`${styles.navLink}`}>Home</Link>
           </li>
+          {/* TODO conditionally show signup link depending if the user is logged in */}
           <li onClick={removeActive}>
-            <Link to='/signUp' className={`${styles.navLink}`}>Sign Up</Link>
+            <Link to='/signup' className={`${styles.navLink}`}>Sign Up</Link>
           </li>
+          {/* TODO conditionally show login link depending if the user is logged in */}
           <li onClick={removeActive}>
             <Link to='/login' className={`${styles.navLink}`}>Login</Link>
           </li>
+          {/* TODO conditionally show profile if user is not logged in */}
           <li onClick={removeActive}>
             <Link to='/profile' className={`${styles.navLink}`}>Profile</Link>
           </li>
+          {/* TODO conditionally show logout if the user is not logged in */}
           <li onClick={removeActive}>
             <Link to='/login' className={`${styles.navLink}`} onClick={handleLogout}>Logout</Link>
           </li>
@@ -66,5 +72,13 @@ function Navbar() {
     </header>
   );
 }
+
+function banner (){
+  return(
+      <div className="home-logo">
+        <img className="groupomania-logo" src='../assets/icon-left-font-monochrome-black.svg' alt="red groupomania logo with a red circle an curved lines inside"></img>
+      </div>
+  )
+  }
 
 export default Navbar;

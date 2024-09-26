@@ -16,7 +16,7 @@ function SignUp() {
 
         // Handle validations
         axios
-            .post("http://localhost:3000/api/posts", { email, password, firstName, lastName })
+            .post("http://localhost:3000/api/auth/signup", { email, password, firstName, lastName })
             .then(response => {
                 console.log(response)
                 // Handle response

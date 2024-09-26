@@ -89,3 +89,20 @@ exports.deleteUser = (req, res, next) => {
         }
     );
 };
+
+exports.postRead = (req, res, next) => {
+    User.findOne({ where: { id: req.params.id } }).then(
+        () => {
+            res.status(200).json({
+                message: 'Post has been read!'
+            });
+        }
+    ).catch(
+        (error) => {
+            console.log(exports.postRead)
+            res.status(400).json({
+                error: error.message
+            });
+        }
+    );
+};

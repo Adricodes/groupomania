@@ -13,7 +13,7 @@ import Profile from "./Profile";
 
 
 const PrivateRoutes = () => {
-  const token = JSON.parse(localStorage.getItem('token')) || 'false';
+  const token = (localStorage.getItem('token')) || false;
   return token ? <Outlet /> : <Navigate to="/login" />;
 }
 

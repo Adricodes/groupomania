@@ -42,29 +42,29 @@
 
   <body>
     <header>
-  <!-- <img class="main-logo" src="icon-left-font.png" alt="groupomania logo"> -->
+  <!-- <img className="main-logo" src="icon-left-font.png" alt="groupomania logo"> -->
   
 <nav>
   <mat-spinner *ngIf="loading"></mat-spinner>
 <form [formGroup]="signupForm" *ngIf="!loading">
-  <div class="form-group">
+  <div className="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" formControlName="email">
+    <input type="email" className="form-control" id="email" formControlName="email">
   </div>
-  <div class="form-group">
+  <div className="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" formControlName="password">
+    <input type="password" className="form-control" id="password" formControlName="password">
   </div>
   <button mat-raised-button color="primary" [disabled]="signupForm.invalid" (click)="onSignup()">SIGN UP</button>
-  <!-- <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p> -->
+  <!-- <p className="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p> -->
 </form>
 </nav>
 
-<img class="main-logo" src="icon-left-font.png" alt="groupomania logo">
+<img className="main-logo" src="icon-left-font.png" alt="groupomania logo">
 
-<h2 class="start-post">Start your post!</h2>
+<h2 className="start-post">Start your post!</h2>
 
-<form class="form-post"></form>
+<form className="form-post"></form>
 <textarea id="form-post" name="w3review" rows="20" cols="50"></textarea>
 <br>
 <input type="submit" value="Submit">

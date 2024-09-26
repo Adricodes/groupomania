@@ -18,12 +18,6 @@ exports.getAllPosts = (req, res, next) => {
     order: [['createdAt', 'DESC']]
   }
 
-  // if (req.query.userId) {
-  //     options.where = {
-  //         userId: parseInt(req.query.userId)
-  //     }
-  // }
-
   Post.findAll(options)
     .then(posts => res.status(200).json(posts))
     .catch(error => res.status(400).json({ error }))
@@ -32,11 +26,12 @@ exports.getAllPosts = (req, res, next) => {
 exports.createPost = async (req, res, next) => {
   let post
   console.log(req.body)
+  let parsedPost
   if (req.file) {
-    const parsedPost = JSON.parse(req.body.post);
+    parsedPost = JSON.parse(req.body.post);
     const url = req.protocol + '://' + req.get('host');
     // req.body.user = JSON.parse(req.body.user);
-     post = Post.build({
+    post = Post.build({
       userId: parsedPost.userId,
       title: parsedPost.title,
       content: parsedPost.content,
@@ -44,13 +39,14 @@ exports.createPost = async (req, res, next) => {
       mediaUrl: url + '/media/' + req.file.filename,
     });
   } else {
-    post = {
+    parsedPost = req.body
+    post = Post.build({
       userId: parsedPost.userId,
       title: parsedPost.title,
       content: parsedPost.content,
-    };
+      usersRead: [],
+    });
   }
-
   post.save().then(
     () => {
       res.status(201).json({
@@ -64,10 +60,5 @@ exports.createPost = async (req, res, next) => {
       });
     }
   );
-
-  // const post = await User.create({ firstName });
-  // // console.log(jane); // Don't do this
-  // console.log(firstName.toJSON()); // This is good!
-  // console.log(JSON.stringify(firstName, null, 4))
-
 }
+// TODO add handler for getting one post using project esix as a reference
