@@ -61,4 +61,19 @@ exports.createPost = async (req, res, next) => {
     }
   );
 }
-// TODO add handler for getting one post using project esix as a reference
+// TODO add handler for getting one post using project six as a reference
+exports.getOnePost = (req, res, next) => {
+  Post.findOne({
+    _id: req.params.id
+  }).then(
+    (post) => {
+      res.status(200).json(post);
+    }
+  ).catch(
+    (error) => {
+      res.status(404).json({
+        error: error
+      });
+    }
+  );
+};
