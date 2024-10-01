@@ -8,9 +8,10 @@ import '../styles/Home.css';
 function Home() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [posts, setPosts] = useState([])
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('')
-  const handleSubmit = e => {// Prevent the default submit and page reload
+  const createPost = e => {// Prevent the default submit and page reload
     e.preventDefault()
     const userId = parseInt(localStorage.getItem('userId'));
     const token = localStorage.getItem('token');
@@ -32,24 +33,7 @@ function Home() {
   useEffect(() => {
     getPosts();
   }, []);
-  // Pass an empty array to only call the function once on mount.
-  function MyComponent() {
-    useEffect(() => {
-      // Code here runs once, after the component mounts
-      console.log('Component mounted');
 
-      // Optional cleanup function (runs when the component unmounts)
-      return () => {
-        console.log('Component unmounted');
-      };
-    }, []); // Empty array ensures the effect runs only once on mount
-
-    return (
-      <div>
-        <h1>Hello, World!</h1>
-      </div>
-    );
-  }
 
 
   const getPosts = () => {
@@ -61,41 +45,64 @@ function Home() {
       }
     })
       .then(response => {
-        // TODO set the posts to a post variable that is declared with useState react 
+        setPosts(response.data)
         console.log(response.data);
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
-//  TODO check sign up form on how to handle submit
-  // TODO iterate thru the post info and display a post article tag maybe inside title, etc
+  //  TODO check sign up form on how to handle submit
+  // TODO do this one first - iterate thru the post info and display a post article tag maybe inside title, etc
+  const Post = ({ title, content, mediaUrl, id }) =>
+    <li key={id}>
+      <h2>{title}</h2>
+      <img alt={`media of ${title}`} src={mediaUrl} />
+      <p>{content}</p>
+    </li>
+
+  const Posts = () =>
+    <ul>
+      {posts.map(Post)}
+    </ul>
+
+
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
+    <>
+      <form action="" onSubmit={createPost}>
+        <div>
+          <label htmlFor="title" className="titleLabel">Title:</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
 
-      <div>
-        <label htmlFor="content">Content:</label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
-      </div>
+        <div>
+          <label htmlFor="content" className="contentLabel">Content:</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          />
+        </div>
 
-      <button className="submitButton" type="submit">Submit Post</button>
-    </form>
+        <button className="submitButton" type="submit">Submit Post</button>
+      </form>
+      <Posts />
+    </>
   )
 }
+// const post = ({title,content}) => 
+//   <li key={userId}>
+//     <h2>{title}</h2>
+//     <p>{content}</p>
+//   </li>
 
-  export default Home
+
+
+export default Home

@@ -21,14 +21,14 @@ function Navbar() {
   // const LogoutButton = () => {
 
   const navigate = useNavigate();
-
+  let auth = localStorage.getItem('token');
   const handleLogout = () => {
     // Clear user session, token, or authentication data
-    
+
     localStorage.removeItem('token'); // or sessionStorage.clear() for session storage
-    localStorage.removeItem('userId'); 
-   
-    // Optionally, call the API to log out from the server
+    localStorage.removeItem('userId');
+
+    // Another option is calling the API to log out from the server
     // await fetch('/api/logout', { method: 'POST' });
 
     // Redirect to login or homepage
@@ -59,9 +59,11 @@ function Navbar() {
             <Link to='/profile' className={`${styles.navLink}`}>Profile</Link>
           </li>
           {/* TODO conditionally show logout if the user is not logged in */}
-          <li onClick={removeActive}>
-            <Link to='/login' className={`${styles.navLink}`} onClick={handleLogout}>Logout</Link>
-          </li>
+          {auth &&
+            <li onClick={removeActive}>
+              <Link to='/login' className={`${styles.navLink}`} onClick={handleLogout}>Logout</Link>
+            </li>
+          }
         </ul>
         <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
           <span className={`${styles.bar}`}></span>
@@ -72,13 +74,12 @@ function Navbar() {
     </header>
   );
 }
-
-function banner (){
-  return(
-      <div className="home-logo">
-        <img className="groupomania-logo" src='../assets/icon-left-font-monochrome-black.svg' alt="red groupomania logo with a red circle an curved lines inside"></img>
-      </div>
+function banner() {
+  return (
+    <div className="home-logo">
+      <img className="groupomania-logo" src='../assets/' alt="red groupomania logo with a red circle an curved lines inside"></img>
+    </div>
   )
-  }
+}
 
 export default Navbar;

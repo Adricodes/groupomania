@@ -1,13 +1,10 @@
+body {
+  background-color: rgba(253, 188, 196, 0.8);
+}
+
 form {
   display: flex;
   flex-direction: column;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  padding-left: 10px;
 }
 
 content {
@@ -16,9 +13,17 @@ content {
 
 button {
   margin-bottom: 80px;
+  width: 140px;
+  height: 40px;
 }
 
 textarea {
     width: 450px;
     height: 40px;
 }
+
+label {
+  flex-direction: column;
+}
+
+

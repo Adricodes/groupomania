@@ -61,7 +61,7 @@ exports.createPost = async (req, res, next) => {
     }
   );
 }
-// TODO add handler for getting one post using project six as a reference
+
 exports.getOnePost = (req, res, next) => {
   Post.findOne({
     _id: req.params.id
