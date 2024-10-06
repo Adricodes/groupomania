@@ -1,5 +1,4 @@
 .item {
-    display: flex;
     justify-content: space-between;
     gap: 20px;
 }
@@ -8,16 +7,22 @@
   color: red;
 }
 
-.undefined {
+li {
   color: black;
-  font-size: 18px;
+  font-size: 34px;
 }
 
+ul {
+  display: flex;
+  flex-direction: row;
+  margin-right: 80px;
+}
 
 h1 {
   color: red;
   font-size: 24px;
   margin-top: 40px;
+  margin-left: 75px;
 }
 
 p.item {
@@ -32,4 +37,13 @@ p.item {
 
 label {
   font-size: 18px;
+  margin-left: 80px;
+}
+
+input {
+  margin-right: 20px;
+}
+
+.submitLogin {
+  margin-left: 360px;
 }

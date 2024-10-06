@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from '../styles/Navbar.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/icon-left-font-monochrome-black.svg';
+import logo from '../assets/icon-above-font.svg';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
@@ -35,29 +35,37 @@ function Navbar() {
     navigate('/login'); // or navigate('/') for homepage
   };
 
+  // const home = localStorage.getItem(home);
+  // const handleHome = () => {
+  //   localStorage.removeItem(home);
+  // }
+
   return (
     <header className="app-header">
       <nav className={`${styles.navbar}`}>
         <Link to="/">
-          <img src={logo} alt="Logo" />
+          <img className="groupomania-logo" src={logo} alt="Logo" />
         </Link>
         <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
           {/* TODO conditionally show home when user is not logged in */}
           <li onClick={removeActive}>
             <Link to='/' className={`${styles.navLink}`}>Home</Link>
           </li>
+
           {/* TODO conditionally show signup link depending if the user is logged in */}
           <li onClick={removeActive}>
-            <Link to='/signup' className={`${styles.navLink}`}>Sign Up</Link>
+            <Link to='/signup' className={`${styles.navLink}`} >Sign Up</Link>
           </li>
           {/* TODO conditionally show login link depending if the user is logged in */}
           <li onClick={removeActive}>
             <Link to='/login' className={`${styles.navLink}`}>Login</Link>
           </li>
           {/* TODO conditionally show profile if user is not logged in */}
-          <li onClick={removeActive}>
-            <Link to='/profile' className={`${styles.navLink}`}>Profile</Link>
-          </li>
+          {auth &&
+            <li onClick={removeActive}>
+              <Link to='/profile' className={`${styles.navLink}`}>Profile</Link>
+            </li>
+          }
           {/* TODO conditionally show logout if the user is not logged in */}
           {auth &&
             <li onClick={removeActive}>
@@ -73,13 +81,6 @@ function Navbar() {
       </nav>
     </header>
   );
-}
-function banner() {
-  return (
-    <div className="home-logo">
-      <img className="groupomania-logo" src='../assets/' alt="red groupomania logo with a red circle an curved lines inside"></img>
-    </div>
-  )
 }
 
 export default Navbar;

@@ -12,8 +12,9 @@ content {
 }
 
 button {
-  margin-bottom: 80px;
-  width: 140px;
+  margin-top: 10px;
+  margin-left: 470px;
+  width: 100px;
   height: 40px;
 }
 
@@ -26,4 +27,48 @@ label {
   flex-direction: column;
 }
 
+.groupomania-logo {
+margin-left: 150px;
+}
 
+.postForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleWhiteLabel {
+  margin-left: 30px;
+}
+
+.contentWhiteLabel {
+  margin-top: 10px;
+}
+
+.contentLabel {
+  margin-top: 60px;
+}
+
+.postCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.postCard {
+  background: white;
+  border-radius: 20px;
+  padding: 11px;
+  width: 330px;
+  height: 310px;
+  flex-direction: column;
+  padding: 5px 5px 5px;
+  margin-left: 0px;
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

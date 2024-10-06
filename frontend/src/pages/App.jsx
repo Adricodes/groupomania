@@ -9,6 +9,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import React from "react";
 import Navbar from './Navbar';
 import Profile from "./Profile";
+import PostDetails from "./PostDetails";
 
 
 
@@ -27,8 +28,8 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/posts/:id" element={<PostDetails />} />
           </Route>
-
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

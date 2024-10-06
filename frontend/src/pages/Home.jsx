@@ -24,6 +24,7 @@ function Home() {
         console.log(response)
         // Handle response
         // navigate('/');
+        getPosts();
       })
       .catch(error => {
         setErrorMessage('Oops, there is an error!')
@@ -55,11 +56,15 @@ function Home() {
   //  TODO check sign up form on how to handle submit
   // TODO do this one first - iterate thru the post info and display a post article tag maybe inside title, etc
   const Post = ({ title, content, mediaUrl, id }) =>
+    <div className="postCardContainer">
+    <div className="postCard">
     <li key={id}>
       <h2>{title}</h2>
       <img alt={`media of ${title}`} src={mediaUrl} />
       <p>{content}</p>
     </li>
+    </div>
+    </div>
 
   const Posts = () =>
     <ul>
@@ -69,10 +74,11 @@ function Home() {
 
   return (
     <>
-      <form action="" onSubmit={createPost}>
+      <form className="postForm" action="" onSubmit={createPost}>
         <div>
           <label htmlFor="title" className="titleLabel">Title:</label>
           <input
+          className="titleWhiteLabel"
             type="text"
             id="title"
             value={title}
@@ -84,6 +90,7 @@ function Home() {
         <div>
           <label htmlFor="content" className="contentLabel">Content:</label>
           <textarea
+          className="contentWhiteLabel"
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -97,12 +104,5 @@ function Home() {
     </>
   )
 }
-// const post = ({title,content}) => 
-//   <li key={userId}>
-//     <h2>{title}</h2>
-//     <p>{content}</p>
-//   </li>
-
-
 
 export default Home

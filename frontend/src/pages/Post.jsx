@@ -8,7 +8,7 @@ function Post() {
     const [userId, setUserId] = useState('')
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [usersRead setUsersRead] = useState('')
+    const [usersRead, setUsersRead] = useState('')
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
 

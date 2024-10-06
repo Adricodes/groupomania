@@ -67,7 +67,7 @@ function Login() {
                     />
                 </p>
                 <p className="item">
-                    <input type="submit" value="login" />
+                    <input type="submit" value="login" className="submitLogin" />
                 </p>
             </form>
         </div>

@@ -25,7 +25,7 @@ exports.getAllPosts = (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
   let post
-  console.log(req.body)
+  // console.log(req.body)
   let parsedPost
   if (req.file) {
     parsedPost = JSON.parse(req.body.post);
