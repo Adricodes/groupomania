@@ -48,7 +48,7 @@ margin-left: 150px;
   margin-top: 60px;
 }
 
-.postCardContainer {
+/* .postCardContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -71,4 +71,4 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
