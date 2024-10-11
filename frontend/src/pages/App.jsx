@@ -1,6 +1,3 @@
-// import logo from '..assets/logo.svg'
-// import './styles.App.css';
-// import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import SignUp from './SignUp';
@@ -32,6 +29,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path=":handle" element={<PostDetails />} />
         </Routes>
       </Router>
     </>

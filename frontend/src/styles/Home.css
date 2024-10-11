@@ -48,10 +48,9 @@ margin-left: 150px;
   margin-top: 60px;
 }
 
-/* .postCardContainer {
+.postCardContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
   justify-content: space-between;
 }
 
@@ -59,8 +58,8 @@ margin-left: 150px;
   background: white;
   border-radius: 20px;
   padding: 11px;
-  width: 330px;
-  height: 310px;
+  width: 230px;
+  height: 230px;
   flex-direction: column;
   padding: 5px 5px 5px;
   margin-left: 0px;
@@ -68,7 +67,22 @@ margin-left: 150px;
 }
 
 h2 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.multimedia {
+  font-size: 18px;
+}
+
+.post {
+  font-size: 18px;
+  /* TODO add truncation here */
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import styles from '../styles/Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from '../assets/icon-above-font.svg';
 import { useNavigate } from 'react-router-dom';
@@ -39,10 +38,10 @@ function Navbar() {
   // const handleHome = () => {
   //   localStorage.removeItem(home);
   // }
-
+const styles={}// FIXME remove styles and classnames below and use real classnames from navbar.css
   return (
     <header className="app-header">
-      <nav className={`${styles.navbar}`}>
+      <nav className="navlink">
         <Link to="/">
           <img className="groupomania-logo" src={logo} alt="Logo" />
         </Link>
@@ -53,13 +52,17 @@ function Navbar() {
           </li>
 
           {/* TODO conditionally show signup link depending if the user is logged in */}
+          {!auth &&
           <li onClick={removeActive}>
             <Link to='/signup' className={`${styles.navLink}`} >Sign Up</Link>
           </li>
+          }
           {/* TODO conditionally show login link depending if the user is logged in */}
+          {!auth &&
           <li onClick={removeActive}>
             <Link to='/login' className={`${styles.navLink}`}>Login</Link>
           </li>
+}
           {/* TODO conditionally show profile if user is not logged in */}
           {auth &&
             <li onClick={removeActive}>
