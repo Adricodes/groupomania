@@ -7,6 +7,8 @@ import React from "react";
 import Navbar from './Navbar';
 import Profile from "./Profile";
 import PostDetails from "./PostDetails";
+import axios from 'axios';
+import './App.css';
 
 
 
@@ -34,7 +36,6 @@ function App() {
       </Router>
     </>
   );
-
 }
 
 export default App

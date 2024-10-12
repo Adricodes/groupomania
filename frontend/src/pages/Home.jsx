@@ -1,4 +1,3 @@
-// import '../styles/Home.css';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -105,5 +104,7 @@ function Home() {
     </>
   )
 }
+
+{/* <Route path=":handle" element={<PostDetails />} /> */}
 
 export default Home
