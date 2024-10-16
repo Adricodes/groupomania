@@ -61,7 +61,9 @@ function Home() {
         <div className="postCard">
           <h2 className="title">{title}</h2>
           <p className="post">{content}</p>
-          <img className="multimedia" alt={`media of ${title}`} src={mediaUrl} />
+          {mediaUrl && (
+            <img className="multimedia" alt={`media of ${title}`} src={mediaUrl} />
+          )}
         </div>
       </a>
     </article>
@@ -104,7 +106,8 @@ function Home() {
     </>
   )
 }
+  
 
-{/* <Route path=":handle" element={<PostDetails />} /> */}
+
 
 export default Home

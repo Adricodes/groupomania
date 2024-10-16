@@ -16,6 +16,12 @@ ul {
     margin-top: 40px;
   }
 
+  .app-header {
+    display: flex;
+    justify-content: center;
+  }
+
   .navbar {
     background-color: red;
+    display: flex;
   }

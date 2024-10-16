@@ -13,11 +13,16 @@
   font-size: 18px;
 }
 
-
 h1 {
   color: red;
   font-size: 24px;
   margin-top: 40px;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 p.item {

@@ -5,6 +5,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 content {
@@ -28,20 +29,29 @@ label {
 }
 
 .groupomania-logo {
-margin-left: 150px;
+  display: flex;
+  justify-content: center;
+/* margin-left: 150px; */
 }
 
 .postForm {
   display: flex;
   flex-direction: column;
+  margin-left: 350px;
 }
 
 .titleWhiteLabel {
   margin-left: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .contentWhiteLabel {
-  margin-top: 10px;
+  margin-top: 1px;
+  margin-left: -10px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
 }
 
 .contentLabel {
@@ -51,14 +61,14 @@ margin-left: 150px;
 .postCardContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .postCard {
   background: white;
   border-radius: 20px;
   padding: 11px;
-  width: 230px;
+  max-width: 350px;
   height: 230px;
   flex-direction: column;
   padding: 5px 5px 5px;
@@ -68,6 +78,10 @@ margin-left: 150px;
 
 h2 {
   font-size: 20px;
+  color: black;
+}
+
+a {
   text-decoration: none;
 }
 
@@ -77,12 +91,17 @@ h2 {
 
 .post {
   font-size: 18px;
+  color: black;
   /* TODO add truncation here */
+  white-space: nowrap;        /* Prevents the text from wrapping */
+  overflow: hidden;           /* Hides the overflowed text */
+  text-overflow: ellipsis;    /* Adds the ellipsis at the end */
+  width: 200px;               /* Set a fixed width for the container */
 }
 
 .posts {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 

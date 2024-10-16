@@ -35,6 +35,14 @@ p.item {
   line-height: 12px;
 }
 
+#email {
+  margin-right: 80px;
+}
+
+#password {
+margin-right: 80px;
+}
+
 label {
   font-size: 18px;
   margin-left: 80px;
@@ -45,5 +53,5 @@ input {
 }
 
 .submitLogin {
-  margin-left: 360px;
+  margin-left: 280px;
 }

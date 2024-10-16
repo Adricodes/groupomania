@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
 
-function PostDetails() {
+function PostMultimedia() {
     const [userId, setUserId] = useState('')
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+    const[multimedia, setMultimedia] = useState('')
     const [usersRead, setUsersRead] = useState('')
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
@@ -15,16 +16,10 @@ function PostDetails() {
         e.preventDefault()
 
         axios
-            .post("http://localhost:3000/api/posts", { userId, title, content, usersRead, multiMedia })
+            .post("http://localhost:3000/api/posts", { userId, title, content, usersRead, multimedia })
             .then(response => {
                 console.log(response)
-
-                const userId = response.data.userId;
-                const token = response.data.token;
-                localStorage.setItem("userId", JSON.stringify(userId));
-                localStorage.setItem("token", JSON.stringify(token));
-
-                navigate('/.profile');
+                navigate('/.post');
 
             })
             .catch(error => {

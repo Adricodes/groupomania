@@ -27,8 +27,10 @@ exports.createPost = async (req, res, next) => {
   let post
   // console.log(req.body)
   let parsedPost
+  console.log(req.file)
   if (req.file) {
     parsedPost = JSON.parse(req.body.post);
+    console.log(req.body)
     const url = req.protocol + '://' + req.get('host');
     // req.body.user = JSON.parse(req.body.user);
     post = Post.build({
@@ -75,5 +77,22 @@ exports.getOnePost = (req, res, next) => {
         error: error
       });
     }
+  );
+};
+
+exports.postRead = (req, res, next) => {
+  User.findOne({ where: { id: req.params.id } }).then(
+      () => {
+          res.status(200).json({
+              message: 'Post has been read!'
+          });
+      }
+  ).catch(
+      (error) => {
+          console.log(exports.postRead)
+          res.status(400).json({
+              error: error.message
+          });
+      }
   );
 };

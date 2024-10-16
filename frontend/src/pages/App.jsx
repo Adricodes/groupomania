@@ -8,9 +8,7 @@ import Navbar from './Navbar';
 import Profile from "./Profile";
 import PostDetails from "./PostDetails";
 import axios from 'axios';
-import './App.css';
-
-
+import '../App.css';
 
 const PrivateRoutes = () => {
   const token = (localStorage.getItem('token')) || false;
@@ -36,6 +34,7 @@ function App() {
       </Router>
     </>
   );
+  
 }
 
 export default App
