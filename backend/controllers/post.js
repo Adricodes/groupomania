@@ -66,7 +66,7 @@ exports.createPost = async (req, res, next) => {
 
 exports.getOnePost = (req, res, next) => {
   Post.findOne({
-    _id: req.params.id
+    where: { id: req.params.id }
   }).then(
     (post) => {
       res.status(200).json(post);
@@ -82,17 +82,17 @@ exports.getOnePost = (req, res, next) => {
 
 exports.postRead = (req, res, next) => {
   User.findOne({ where: { id: req.params.id } }).then(
-      () => {
-          res.status(200).json({
-              message: 'Post has been read!'
-          });
-      }
+    () => {
+      res.status(200).json({
+        message: 'Post has been read!'
+      });
+    }
   ).catch(
-      (error) => {
-          console.log(exports.postRead)
-          res.status(400).json({
-              error: error.message
-          });
-      }
+    (error) => {
+      console.log(exports.postRead)
+      res.status(400).json({
+        error: error.message
+      });
+    }
   );
 };

@@ -15,7 +15,6 @@ const PrivateRoutes = () => {
   return token ? <Outlet /> : <Navigate to="/login" />;
 }
 
-
 function App() {
   return (
     <>

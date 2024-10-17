@@ -1,4 +1,4 @@
-.postDetailCard {
+.postDetail {
     background: white;
     border-radius: 20px;
     padding: 11px;
@@ -8,4 +8,10 @@
     padding: 5px 5px 5px;
     margin-left: 0px;
     box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .postDetailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
