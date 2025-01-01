@@ -48,8 +48,8 @@ label {
 
 .contentWhiteLabel {
   margin-top: 1px;
-  margin-left: -10px;
-  width: 250px;
+  margin-right:330px;
+  width: 230px;
   display: flex;
   justify-content: center;
 }
@@ -58,10 +58,21 @@ label {
   margin-top: 60px;
 }
 
+.submitButton {
+  margin-top: 30px;
+  margin-left: 45px;
+}
+
+.uploadButton {
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
 .postCardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .postCard {
@@ -91,6 +102,9 @@ a {
 
 .multimedia {
   font-size: 18px;
+  width: 300px;
+  height: 125px;
+  border-radius: 20px;
 }
 
 .post {

@@ -27,10 +27,10 @@ exports.createPost = async (req, res, next) => {
   let post
   // console.log(req.body)
   let parsedPost
-  console.log(req.file)
+  
   if (req.file) {
     parsedPost = JSON.parse(req.body.post);
-    console.log(req.body)
+    console.log(parsedPost)
     const url = req.protocol + '://' + req.get('host');
     // req.body.user = JSON.parse(req.body.user);
     post = Post.build({

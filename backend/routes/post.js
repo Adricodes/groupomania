@@ -10,6 +10,6 @@ router.get('/:id', auth, postsCtrl.getOnePost)
 router.get('/', auth, postsCtrl.getAllPosts)
 // router.get('/', auth, postsCtrl.postDetails)
 // TODO add route for marking a post as read
-router.get('/:id', auth, postsCtrl.postRead)
+// router.get('/:id', auth, postsCtrl.postRead)
 
 module.exports = router

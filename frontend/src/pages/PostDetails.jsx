@@ -29,22 +29,32 @@ function PostDetails() {
                 console.log(post)
 
                 // TODO set response post to react use state variable call it post
+                function PostComponent() {
+                    // Declare the state variable 'post' and the setter function 'setPost'
+                    const [post, setPost] = useState('');
+                  
+                    // Example function to update the post state
+                    const handlePostChange = (e) => {
+                      setPost(e.target.value);
+                    };
+                  
+                    return (
+                      <div>
+                        <input 
+                          type="text" 
+                          value={post} 
+                          onChange={handlePostChange} 
+                          placeholder="Write your post here" 
+                        />
+                        <p>Your post: {post}</p>
+                      </div>
+                    );
+                  }
             })
             .catch(error => {
                 setErrorMessage('Oops, there is an error!')
             })
     }
-
-
-    return (
-        <div className="postDetailContainer">
-        <div className="postdetail">
-            <h2 className='postDetailTitle'>{title}</h2>
-            <p className='postDetailContent'>{content}</p>
-            {/* <img alt={`media of ${title}`} src={mediaUrl} /> */}
-        </div>
-        </div>
-    )
 }
 
 export default PostDetails;

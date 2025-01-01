@@ -11,6 +11,11 @@ function Home() {
   const [posts, setPosts] = useState([])
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('')
+  const [file, setFile] = useState()
+
+  function handleChange(event) {
+    setFile(event.target.files[0])
+  }
   const createPost = e => {// Prevent the default submit and page reload
     e.preventDefault()
     const userId = parseInt(localStorage.getItem('userId'));
@@ -57,17 +62,19 @@ function Home() {
   // TODO do this one first - iterate thru the post info and display a post article tag maybe inside title, etc
   // FIXME use react parameterized routes 
   const Post = ({ title, content, mediaUrl, id }) =>
-    <article key={id} className="postCardContainer">
-      <Link className="post-link" to={`./posts/${id}`}>
-        <div className="postCard">
-          <h2 className="title">{title}</h2>
-          <p className="post">{content}</p>
-          {mediaUrl && (
-            <img className="multimedia" alt={`media of ${title}`} src={mediaUrl} />
-          )}
-        </div>
-      </Link>
-    </article>
+    <a href='http://localhost:3000/api/posts/${id}'>
+      <article key={id} className="postCardContainer">
+        <Link className="post-link" to={`./posts/${id}`}>
+          <div className="postCard">
+            <h2 className="title">{title}</h2>
+            <p className="post">{content}</p>
+            {mediaUrl && (
+              <img className="multimedia" alt={`media of ${title}`} src={mediaUrl} />
+            )}
+          </div>
+        </Link>
+      </article>
+    </a>
 
   const Posts = () =>
     <section className="posts">
@@ -102,48 +109,51 @@ function Home() {
         </div>
 
         <button className="submitButton" type="submit">Submit Post</button>
+        <input type="file" onChange={handleChange} />
+        
       </form>
       <Posts />
     </>
   )
-
-    function App() {
-    <button className="uploadButton" type="submit">Upload</button>
-    const [file, setFile] = useState()
-
-    function handleChange(event) {
-      setFile(event.target.files[0])
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault()
-      const url = 'http://localhost:3000/uploadFile';
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('fileName', file.name);
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      };
-      axios.post(url, formData, config).then((response) => {
-        console.log(response.data);
-      });
-
-    }
-
-    return (
-      <div className="App">
-        <form onSubmit={handleSubmit}>
-          <h1>React File Upload</h1>
-          <input type="file" onChange={handleChange} />
-          <button type="submit">Upload</button>
-        </form>
-      </div>
-    );
-  }
 }
 
+function App() {
+
+  const [file, setFile] = useState()
+
+  function handleChange(event) {
+    setFile(event.target.files[0])
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const url = 'http://localhost:3000/uploadFile';
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('fileName', file.name);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    axios.post(url, formData, config).then((response) => {
+      console.log(response.data);
+    });
+
+  }
+
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <h1>React File Upload</h1>
+        <button type="submit">Upload</button>
+        <input type="file" onChange={handleChange} />
+      </form>
+    </div>
+  );
+}
+
+// FIXME clear form fields after submitting
 
 
 
